@@ -19,7 +19,7 @@ const blocks = [
 
 const Blocks = ({ setDragData }) => {
   const onDragStart = (dragData) => {
-    setDragData(dragData);
+//     setDragData(dragData);
   };
 
   const onDragEnd = () => {};
