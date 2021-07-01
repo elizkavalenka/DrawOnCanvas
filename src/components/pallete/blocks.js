@@ -28,7 +28,7 @@ const Blocks = ({ setDragData }) => {
     <Wrapper>
       {blocks.map((b) => (
         <Draggable
-          key={b.name}
+          key={b.id}
           dragObject={b}
           onDragStart={(dragData) => onDragStart(dragData)}
           onDragEnd={() => onDragEnd()}
