@@ -13,8 +13,8 @@ const Wrapper = styled.div`
 `;
 
 const blocks = [
-  { name: "rectangle", color: "blue" },
-  { name: "ellips", color: "green" }
+  { w: 100, h: 50, form: 1, color: "blue" },
+  { w: 100, h: 50, form: 100, color: "green" }
 ];
 
 const Blocks = ({ setDragData }) => {
@@ -33,9 +33,15 @@ const Blocks = ({ setDragData }) => {
           onDragStart={(dragData) => onDragStart(dragData)}
           onDragEnd={() => onDragEnd()}
         >
-          <div className="block" style={{ backgroundColor: b.color }}>
-            {b.name}
-          </div>
+          <div 
+            className="block" 
+            style={{ 
+                   width: b.w,
+                   height: b.h,
+                   borderRadius: b.form,
+                   backgroundColor: b.color
+                  }}
+            ></div>
         </Draggable>
       ))}
     </Wrapper>
