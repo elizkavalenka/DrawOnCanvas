@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import Pallete from './components/pallete';
 import Draw from './components/draw';
 import Blocks from './components/draw'
 import styled from "styled-components";
@@ -27,16 +26,16 @@ function App() {
 	const [draggedData, setDragData] = useState(null);
 
 	return (
-			<Table>
-				<Header>Figures</Header>
-				<Header>Canvas</Header>
-				<Container>
-					<Pallete />
-				</Container>
-				<Container>
-					<Draw />
-				</Container>
-			</Table>
+		<Table>
+			<Header>Figures</Header>
+			<Header>Canvas</Header>
+			<Container>
+				<Blocks setDragData={(dragData) => setDragData(dragData)} />
+		     	</Container>
+			<Container>
+				<Draw draggedData={draggedData} />
+			</Container>
+		</Table>
 	);
 }
 
