@@ -90,30 +90,7 @@ function Draw() {
 	 const info = { x: e.clientX, y: e.clientY, w: 100, h: 50, color: "blue" };
 	 boxes.push(info);
 	 drawFillRect(info);
-  };
-	
-	
-    // const [locations, setLocations] = React.useState(
-    //     JSON.parse(localStorage.getItem('paint-app')) || []
-    // )
-	// const canvasRef = React.useRef(null)
-
-	// React.useEffect(() => {
-    //     const canvas = canvasRef.current
-    //     const ctx = canvas.getContext('2d')
-    //     // ctx.clearRect(0, 0, window.innerHeight, window.innerWidth)
-    //     // locations.forEach(location => figure(ctx, location))
-	// })
-
-	// React.useEffect(() => {
-    //     localStorage.setItem('draw-app', JSON.stringify(locations))
-	// })
-
-	// function handleCanvasClick(e) {
-    //     const newLocation = { x: e.clientX, y: e.clientY }
-    //     setLocations([...locations, newLocation])
-	// }
-    
+  };  
      
     return ( 
         <canvas
