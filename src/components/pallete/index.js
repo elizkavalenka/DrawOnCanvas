@@ -1,2 +1,4 @@
 import Pallete from './pallete';
-export default Pallete;
+import Draggable from '../draggable'
+import Blocks from '../blocks'
+export {Pallete, Draggable, Blocks};

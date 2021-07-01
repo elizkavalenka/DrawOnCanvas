@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Pallete from './components/pallete';
 import Draw from './components/draw';
-
+import Blocks from './components/draw'
 import styled from "styled-components";
 
 const Table = styled.div`
@@ -23,6 +23,9 @@ const Container = styled.div`
 `;
 
 function App() {
+
+	const [draggedData, setDragData] = useState(null);
+
 	return (
 			<Table>
 				<Header>Figures</Header>
