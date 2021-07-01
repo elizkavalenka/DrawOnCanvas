@@ -1,27 +1,11 @@
 import React, {useRef, useEffect} from 'react'
-// import styled from 'styled-components';
-
-
-// const SVG = 'M 10 10 H 90 V 90 H 10 Z'
-// const PATH = new Path2D(SVG)
-// const SCALE = 1
-// const OFFSET = 80
-
-// function figure(ctx, location) {
-//     ctx.fillStyle = 'green'
-//     ctx.save()
-//     ctx.scale(SCALE, SCALE)
-//     ctx.translate(location.x / SCALE - OFFSET, location.y / SCALE - OFFSET)
-//     ctx.fill(PATH)
-//     ctx.restore()
-// }
 
 function Draw() {
     const canvas = useRef(null);
     let ctx = null;
     const boxes = [
-        { x: 300, y: 120, w: 100, h: 50 },
-        { x: 100, y: 120, w: 100, h: 50 }
+        { x: 300, y: 120, w: 100, h: 50, color: "green" },
+    	{ x: 100, y: 120, w: 100, h: 50, color: "blue" }
     ];
     let isDown = false;
     let dragTarget = null;
@@ -30,12 +14,8 @@ function Draw() {
 
     useEffect(() => {
         const canvasEle = canvas.current;
-
         ctx = canvasEle.getContext("2d");
-    }, []);
-
-    useEffect(() => {
-        paint();
+	paint();
     });
 
     const paint = () => {
@@ -48,12 +28,11 @@ function Draw() {
         boxes.map((info) => drawFillRect(info));
     };
 
-    const drawFillRect = (info, style = {}) => {
-        const { x, y, w, h } = info;
-        const { backgroundColor = "green" } = style;
-
+    const drawFillRect = (info) => {
+        const { x, y, w, h,  color} = info;
+       
         ctx.beginPath();
-        ctx.fillStyle = backgroundColor;
+        ctx.fillStyle = color;
         ctx.fillRect(x, y, w, h);
     };
 
@@ -106,7 +85,14 @@ function Draw() {
     const handleMouseOut = (e) => {
         handleMouseUp(e);
     };
-
+	
+    const handleMouseDblClick = (e) => {
+	 const info = { x: e.clientX, y: e.clientY, w: 100, h: 50, color: "blue" };
+	 boxes.push(info);
+	 drawFillRect(info);
+  };
+	
+	
     // const [locations, setLocations] = React.useState(
     //     JSON.parse(localStorage.getItem('paint-app')) || []
     // )
@@ -136,9 +122,9 @@ function Draw() {
             onMouseUp={handleMouseUp}
             onMouseOut={handleMouseOut}
             ref={canvas}
-            width={700}
-        	height={700}
-            // onClick={handleCanvasClick}  
+            width={document.documentElement.clientWidth * 0.7}
+      	    height={document.documentElement.clientHeight * 0.7}
+            onDoubleClick={handleMouseDblClick}
         />
     )
 }
